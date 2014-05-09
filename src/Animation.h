@@ -16,7 +16,7 @@ public:
     void addFrame(ofImage & newFrame);
     void insertFrame(ofImage & newFrame);
     void insertFrameAt(int index, ofImage & newFrame);
-    void removeFrameAt(int index);
+    void removeFrame(int index = -1);
     void nextFrame();
     void previousFrame();
     void reset();

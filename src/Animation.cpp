@@ -42,9 +42,18 @@ void Animation::insertFrameAt(int index, ofImage & newFrame)
     
 }
 
-void Animation::removeFrameAt(int index)
+void Animation::removeFrame(int index)
 {
-    
+  if (mFrames.size() <= 0) return;
+
+  if (index < 0) 
+    index = mCurrentFrame;
+
+  mFrames.erase(mFrames.begin() + index);
+
+  // probably unnecessary, but make sure to be on an existing frame
+  previousFrame();
+  nextFrame();
 }
 
 void Animation::nextFrame()
@@ -61,10 +70,11 @@ void Animation::previousFrame()
 
 void Animation::reset()
 {
-    
+    clear();
 }
 
 void Animation::clear()
 {
-    
+    mCurrentFrame = 0;
+    mFrames.clear();
 }

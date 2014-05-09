@@ -27,5 +27,5 @@ class testApp : public ofBaseApp{
 		ofVideoGrabber mVideoGrabber;
 		int mCamWidth, mCamHeight;
 		ofImage mFrame;
-    bool bAddFrame;
+		bool bAddFrame;
 };

@@ -25,7 +25,7 @@ void testApp::videoGrabberSetup()
         }
     }
 
-    mVideoGrabber.setDeviceID(0);
+    //    mVideoGrabber.setDeviceID(0);
     mVideoGrabber.setDesiredFrameRate(60);
     mVideoGrabber.initGrabber(mCamWidth,mCamHeight);
 }
@@ -34,7 +34,7 @@ void testApp::videoGrabberSetup()
 void testApp::update(){
         mVideoGrabber.update();
     
-    if (mVideoGrabber.isFrameNew()){
+	if (mVideoGrabber.isFrameNew()){
         
         if(bAddFrame){
             mFrame.setFromPixels(mVideoGrabber.getPixels(), mCamWidth, mCamHeight, OF_IMAGE_COLOR);
@@ -48,10 +48,11 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
-    // mVideoGrabber.draw(0,0, 320, 240);
+  ofBackground(0);
+  //    mVideoGrabber.draw(0,0, 320, 240);
     // mFrame.draw(330,0, 320, 240);
-    mAnimation.draw(0,0, mCamWidth, mCamHeight);
+      mAnimation.draw(0,0, mCamWidth, mCamHeight);
+
 }
 
 //--------------------------------------------------------------
@@ -66,9 +67,17 @@ void testApp::keyPressed(int key){
         case OF_KEY_LEFT:
             mAnimation.previousFrame();
             break;
+        case OF_KEY_UP:
+            mAnimation.removeFrame();
+            break;
+        case OF_KEY_DOWN:
+            mAnimation.reset();
         default: 
             break;
     }
+
+    ofLog() << "Pressed: " << key;
+
 }
 
 //--------------------------------------------------------------
