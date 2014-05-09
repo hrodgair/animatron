@@ -28,4 +28,5 @@ class testApp : public ofBaseApp{
 		int mCamWidth, mCamHeight;
 		ofImage mFrame;
 		bool bAddFrame;
+		bool bKeyReleased; // used to avoid continuous key presses
 };

@@ -3,6 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     bAddFrame = false;
+    bKeyReleased = true;
     mAnimation.setup();
     mCamWidth = ofGetWidth();
     mCamHeight = ofGetHeight();
@@ -57,32 +58,35 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key){
-    switch(key) {
-        case ' ': 
-            bAddFrame = true;
-            break;
-        case OF_KEY_RIGHT:
-            mAnimation.nextFrame();
-            break;
-        case OF_KEY_LEFT:
-            mAnimation.previousFrame();
-            break;
-        case OF_KEY_UP:
-            mAnimation.removeFrame();
-            break;
-        case OF_KEY_DOWN:
-            mAnimation.reset();
-        default: 
-            break;
+    if (bKeyReleased){
+        switch(key) {
+            case ' ': 
+                bAddFrame = true;
+                break;
+            case OF_KEY_RIGHT:
+                mAnimation.nextFrame();
+                break;
+            case OF_KEY_LEFT:
+                mAnimation.previousFrame();
+                break;
+            case OF_KEY_UP:
+                mAnimation.removeFrame();
+                break;
+            case OF_KEY_DOWN:
+                mAnimation.reset();
+            default: 
+                break;
+        }
     }
 
     ofLog() << "Pressed: " << key;
 
+    bKeyReleased = false;
 }
 
 //--------------------------------------------------------------
 void testApp::keyReleased(int key){
-
+    bKeyReleased = true;
 }
 
 //--------------------------------------------------------------
